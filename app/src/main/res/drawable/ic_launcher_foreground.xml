@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Adaptive-icon foreground: the handset with its red power key and three
+  infrared arcs. Everything is kept inside the 18..90 safe zone of the 108 dp
+  viewport so no part of the mark is clipped by a circular or squircle mask.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Infrared arcs -->
+    <path
+        android:pathData="M49.24,30.25 A5.5,5.5 0 0 1 58.76,30.25"
+        android:strokeColor="#4DB6FF"
+        android:strokeWidth="2.2"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M46.21,28.5 A9,9 0 0 1 61.79,28.5"
+        android:strokeColor="#4DB6FF"
+        android:strokeWidth="2.2"
+        android:strokeAlpha="0.75"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M43.18,26.75 A12.5,12.5 0 0 1 64.82,26.75"
+        android:strokeColor="#4DB6FF"
+        android:strokeWidth="2.2"
+        android:strokeAlpha="0.5"
+        android:strokeLineCap="round" />
+
+    <!-- Handset body -->
+    <path
+        android:pathData="M48,36 L60,36 A6,6 0 0 1 66,42 L66,78 A6,6 0 0 1 60,84 L48,84 A6,6 0 0 1 42,78 L42,42 A6,6 0 0 1 48,36 Z"
+        android:fillColor="#2A2A2F"
+        android:strokeColor="#5C5C68"
+        android:strokeWidth="1.2" />
+
+    <!-- Red power key -->
+    <path
+        android:pathData="M50.8,43 a3.2,3.2 0 1,0 6.4,0 a3.2,3.2 0 1,0 -6.4,0 Z"
+        android:fillColor="#D32F2F" />
+
+    <!-- Colour key strip -->
+    <path
+        android:pathData="M47,50 L61,50 A1,1 0 0 1 61,52 L47,52 A1,1 0 0 1 47,50 Z"
+        android:fillColor="#A8A8B2" />
+
+    <!-- Keypad -->
+    <path
+        android:pathData="M46.3,59 a1.7,1.7 0 1,0 3.4,0 a1.7,1.7 0 1,0 -3.4,0 Z"
+        android:fillColor="#A8A8B2" />
+    <path
+        android:pathData="M52.3,59 a1.7,1.7 0 1,0 3.4,0 a1.7,1.7 0 1,0 -3.4,0 Z"
+        android:fillColor="#A8A8B2" />
+    <path
+        android:pathData="M58.3,59 a1.7,1.7 0 1,0 3.4,0 a1.7,1.7 0 1,0 -3.4,0 Z"
+        android:fillColor="#A8A8B2" />
+    <path
+        android:pathData="M46.3,66 a1.7,1.7 0 1,0 3.4,0 a1.7,1.7 0 1,0 -3.4,0 Z"
+        android:fillColor="#A8A8B2" />
+    <path
+        android:pathData="M52.3,66 a1.7,1.7 0 1,0 3.4,0 a1.7,1.7 0 1,0 -3.4,0 Z"
+        android:fillColor="#A8A8B2" />
+    <path
+        android:pathData="M58.3,66 a1.7,1.7 0 1,0 3.4,0 a1.7,1.7 0 1,0 -3.4,0 Z"
+        android:fillColor="#A8A8B2" />
+    <path
+        android:pathData="M46.3,73 a1.7,1.7 0 1,0 3.4,0 a1.7,1.7 0 1,0 -3.4,0 Z"
+        android:fillColor="#A8A8B2" />
+    <path
+        android:pathData="M52.3,73 a1.7,1.7 0 1,0 3.4,0 a1.7,1.7 0 1,0 -3.4,0 Z"
+        android:fillColor="#A8A8B2" />
+    <path
+        android:pathData="M58.3,73 a1.7,1.7 0 1,0 3.4,0 a1.7,1.7 0 1,0 -3.4,0 Z"
+        android:fillColor="#A8A8B2" />
+</vector>

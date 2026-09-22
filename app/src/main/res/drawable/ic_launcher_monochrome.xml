@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Themed-icon layer for Android 13 and later. A single flat silhouette: the
+  system recolours it, so anything drawn here must read as one solid shape.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108"
+    android:tint="#FFFFFF">
+
+    <path
+        android:pathData="M49.24,30.25 A5.5,5.5 0 0 1 58.76,30.25"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.6"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M46.21,28.5 A9,9 0 0 1 61.79,28.5"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.6"
+        android:strokeLineCap="round" />
+
+    <path
+        android:pathData="M48,36 L60,36 A6,6 0 0 1 66,42 L66,78 A6,6 0 0 1 60,84 L48,84 A6,6 0 0 1 42,78 L42,42 A6,6 0 0 1 48,36 Z"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.6" />
+
+    <path
+        android:pathData="M50.8,43 a3.2,3.2 0 1,0 6.4,0 a3.2,3.2 0 1,0 -6.4,0 Z"
+        android:fillColor="#FFFFFF" />
+    <path
+        android:pathData="M47,50 L61,50 A1,1 0 0 1 61,52 L47,52 A1,1 0 0 1 47,50 Z"
+        android:fillColor="#FFFFFF" />
+    <path
+        android:pathData="M46.3,59 a1.7,1.7 0 1,0 3.4,0 a1.7,1.7 0 1,0 -3.4,0 Z"
+        android:fillColor="#FFFFFF" />
+    <path
+        android:pathData="M52.3,59 a1.7,1.7 0 1,0 3.4,0 a1.7,1.7 0 1,0 -3.4,0 Z"
+        android:fillColor="#FFFFFF" />
+    <path
+        android:pathData="M58.3,59 a1.7,1.7 0 1,0 3.4,0 a1.7,1.7 0 1,0 -3.4,0 Z"
+        android:fillColor="#FFFFFF" />
+    <path
+        android:pathData="M46.3,66 a1.7,1.7 0 1,0 3.4,0 a1.7,1.7 0 1,0 -3.4,0 Z"
+        android:fillColor="#FFFFFF" />
+    <path
+        android:pathData="M52.3,66 a1.7,1.7 0 1,0 3.4,0 a1.7,1.7 0 1,0 -3.4,0 Z"
+        android:fillColor="#FFFFFF" />
+    <path
+        android:pathData="M58.3,66 a1.7,1.7 0 1,0 3.4,0 a1.7,1.7 0 1,0 -3.4,0 Z"
+        android:fillColor="#FFFFFF" />
+    <path
+        android:pathData="M46.3,73 a1.7,1.7 0 1,0 3.4,0 a1.7,1.7 0 1,0 -3.4,0 Z"
+        android:fillColor="#FFFFFF" />
+    <path
+        android:pathData="M52.3,73 a1.7,1.7 0 1,0 3.4,0 a1.7,1.7 0 1,0 -3.4,0 Z"
+        android:fillColor="#FFFFFF" />
+    <path
+        android:pathData="M58.3,73 a1.7,1.7 0 1,0 3.4,0 a1.7,1.7 0 1,0 -3.4,0 Z"
+        android:fillColor="#FFFFFF" />
+</vector>

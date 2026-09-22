@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Mirrors RemoteColors in the Compose theme, for the launch window and
+         the adaptive launcher icon. -->
+    <color name="backdrop">#FF07070A</color>
+    <color name="body">#FF121214</color>
+    <color name="icon_background">#FF121214</color>
+    <color name="power_red">#FFD32F2F</color>
+</resources>
