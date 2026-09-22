@@ -32,6 +32,20 @@ object RemoteColors {
     val ColourYellow = Color(0xFFFDD835)
     val ColourBlue = Color(0xFF1E88E5)
 
+    /**
+     * The four coloured keys, sampled from the handset. On this remote the
+     * coloured keys are Audio, APP, Wifi and Info rather than a separate
+     * red/green/yellow/blue strip.
+     */
+    val KeyAudio = Color(0xFFBE3A2B)
+    val KeyAudioPressed = Color(0xFFE05243)
+    val KeyApp = Color(0xFF4C9A3F)
+    val KeyAppPressed = Color(0xFF6DBE5F)
+    val KeyWifi = Color(0xFFDE8A1C)
+    val KeyWifiPressed = Color(0xFFF5A73C)
+    val KeyInfo = Color(0xFF2C6FB5)
+    val KeyInfoPressed = Color(0xFF4A90D9)
+
     val LabelPrimary = Color(0xFFF2F2F4)
     val LabelSecondary = Color(0xFFA8A8B2)
     val LabelMuted = Color(0xFF6E6E78)

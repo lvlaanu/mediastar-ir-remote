@@ -1,78 +1,65 @@
 package com.lvlaanu.mediastarremote.ui.components
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.KeyboardArrowLeft
-import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.lvlaanu.mediastarremote.data.RemoteKey
 import com.lvlaanu.mediastarremote.ui.theme.RemoteColors
 
 /**
- * The circular navigation ring with OK at its centre.
+ * The direction cluster: four oval arrow keys arranged in a diamond around a
+ * round OK key, matching the handset.
  *
- * Built as four arrow keys positioned around the edge of a drawn ring rather
- * than as true arc-shaped hit areas. Arc hit-testing looks more faithful in a
- * screenshot but is materially worse to use on glass, where a thumb wants a
- * generous rectangular target. The ring artwork carries the visual fidelity and
- * the square targets carry the ergonomics.
+ * Positions are absolute fractions of the cluster's own width rather than
+ * weights in a row, because the arrows are not the same shape as each other:
+ * up and down are wide and flat, left and right are narrow and tall. Absolute
+ * placement is the only way to keep that relationship at every screen size.
+ *
+ * Hit targets are rectangles, not arcs. Arcs photograph better but are
+ * materially worse to hit with a thumb on glass, and the visual fidelity here
+ * comes from the key shapes rather than from the hit geometry.
  */
 @Composable
-fun NavigationPad(
+fun DirectionPad(
     isMapped: (RemoteKey) -> Boolean,
     onKey: (RemoteKey) -> Unit,
     onRepeat: (RemoteKey) -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    // Wider than tall, so the arrows sit close in around OK the way they do on
+    // the handset rather than drifting to the corners of a square.
     BoxWithConstraints(
-        modifier = modifier,
+        modifier = modifier.aspectRatio(1.25f),
         contentAlignment = Alignment.Center,
     ) {
-        val diameter = minOf(maxWidth, maxHeight)
-        val arrowSize = diameter * 0.26f
-        val okSize = diameter * 0.36f
-        val edgeInset = diameter * 0.03f
+        val span = maxWidth
+        val armLong = span * 0.30f
+        val armShort = span * 0.15f
+        val okSize = span * 0.40f
 
-        // The ring itself: a raised dish with a darker centre well.
-        Box(
-            modifier = Modifier
-                .size(diameter)
-                .clip(CircleShape)
-                .background(
-                    Brush.radialGradient(
-                        colors = listOf(
-                            RemoteColors.KeyRaised,
-                            RemoteColors.Key,
-                            RemoteColors.BodyEdge,
-                        ),
-                    ),
-                )
-                .border(1.dp, RemoteColors.KeyBorder, CircleShape),
-        )
-
-        RoundRemoteButton(
+        PillRemoteButton(
             label = "",
             icon = Icons.Filled.KeyboardArrowUp,
             modifier = Modifier
-                .size(arrowSize)
-                .align(Alignment.TopCenter)
-                .padding(top = edgeInset),
+                .width(armLong)
+                .height(armShort)
+                .align(Alignment.TopCenter),
             accent = RemoteColors.KeyRaised,
+            pressedAccent = RemoteColors.KeyRaisedPressed,
+            minHeight = 0.dp,
             mapped = isMapped(RemoteKey.UP),
             autoRepeat = true,
             contentDescription = "Up",
@@ -80,14 +67,16 @@ fun NavigationPad(
             onRepeat = { onRepeat(RemoteKey.UP) },
         )
 
-        RoundRemoteButton(
+        PillRemoteButton(
             label = "",
             icon = Icons.Filled.KeyboardArrowDown,
             modifier = Modifier
-                .size(arrowSize)
-                .align(Alignment.BottomCenter)
-                .padding(bottom = edgeInset),
+                .width(armLong)
+                .height(armShort)
+                .align(Alignment.BottomCenter),
             accent = RemoteColors.KeyRaised,
+            pressedAccent = RemoteColors.KeyRaisedPressed,
+            minHeight = 0.dp,
             mapped = isMapped(RemoteKey.DOWN),
             autoRepeat = true,
             contentDescription = "Down",
@@ -95,14 +84,16 @@ fun NavigationPad(
             onRepeat = { onRepeat(RemoteKey.DOWN) },
         )
 
-        RoundRemoteButton(
+        PillRemoteButton(
             label = "",
-            icon = Icons.Filled.KeyboardArrowLeft,
+            icon = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
             modifier = Modifier
-                .size(arrowSize)
-                .align(Alignment.CenterStart)
-                .padding(start = edgeInset),
+                .width(armShort)
+                .height(armLong)
+                .align(Alignment.CenterStart),
             accent = RemoteColors.KeyRaised,
+            pressedAccent = RemoteColors.KeyRaisedPressed,
+            minHeight = 0.dp,
             mapped = isMapped(RemoteKey.LEFT),
             autoRepeat = true,
             contentDescription = "Left",
@@ -110,14 +101,16 @@ fun NavigationPad(
             onRepeat = { onRepeat(RemoteKey.LEFT) },
         )
 
-        RoundRemoteButton(
+        PillRemoteButton(
             label = "",
-            icon = Icons.Filled.KeyboardArrowRight,
+            icon = Icons.AutoMirrored.Filled.KeyboardArrowRight,
             modifier = Modifier
-                .size(arrowSize)
-                .align(Alignment.CenterEnd)
-                .padding(end = edgeInset),
+                .width(armShort)
+                .height(armLong)
+                .align(Alignment.CenterEnd),
             accent = RemoteColors.KeyRaised,
+            pressedAccent = RemoteColors.KeyRaisedPressed,
+            minHeight = 0.dp,
             mapped = isMapped(RemoteKey.RIGHT),
             autoRepeat = true,
             contentDescription = "Right",
@@ -128,7 +121,7 @@ fun NavigationPad(
         RoundRemoteButton(
             label = "OK",
             modifier = Modifier.size(okSize),
-            accent = RemoteColors.Key,
+            accent = RemoteColors.KeyRaised,
             pressedAccent = RemoteColors.KeyRaisedPressed,
             fontSize = 15.sp,
             mapped = isMapped(RemoteKey.OK),
@@ -138,10 +131,10 @@ fun NavigationPad(
     }
 }
 
-/** Fills its parent, used to keep the pad square inside a row. */
+/** Convenience overload that fills the width it is given. */
 @Composable
-fun NavigationPadFill(
+fun DirectionPadFill(
     isMapped: (RemoteKey) -> Boolean,
     onKey: (RemoteKey) -> Unit,
     onRepeat: (RemoteKey) -> Unit,
-) = NavigationPad(isMapped, onKey, onRepeat, Modifier.fillMaxSize())
+) = DirectionPad(isMapped, onKey, onRepeat, Modifier.fillMaxWidth())

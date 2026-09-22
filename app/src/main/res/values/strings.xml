@@ -15,10 +15,7 @@
     <!-- Key labels, mirrored from RemoteKey for accessibility services -->
     <string name="key_power">Power</string>
     <string name="key_mute">Mute</string>
-    <string name="key_red">Red</string>
-    <string name="key_green">Green</string>
-    <string name="key_yellow">Yellow</string>
-    <string name="key_blue">Blue</string>
+    <!-- The four coloured keys: red, green, amber and blue respectively. -->
     <string name="key_audio">Audio</string>
     <string name="key_app">APP</string>
     <string name="key_wifi">Wifi</string>

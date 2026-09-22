@@ -11,5 +11,10 @@
 local.properties
 *.apk
 *.aab
+
+# Release keystores must never be committed. The debug keystore in
+# app/keystore/ is deliberately tracked: it carries Android's standard public
+# debug credentials, protects nothing, and keeps debug builds signed
+# identically on every machine.
 *.keystore
-!debug.keystore
+!app/keystore/debug.keystore

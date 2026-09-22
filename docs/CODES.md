@@ -64,16 +64,21 @@ the headline feature rather than a fallback.
 |---|---|
 | Digits 0 to 9 | `0x00` to `0x09` at face value |
 | Power, Mute | `0x0A`, `0x0B` |
-| Red, Green, Yellow, Blue | `0x0C` to `0x0F` |
-| Audio, APP, Wifi, Info | `0x10` to `0x13` |
-| EPG, Zoom, Meter, TXT | `0x14` to `0x17` |
-| Rewind, Play, Pause, Forward | `0x18` to `0x1B` |
-| Previous, Stop, Record, Next | `0x1C` to `0x1F` |
-| Sat, F1 | `0x20`, `0x21` |
-| Up, Down, Left, Right, OK | `0x22` to `0x26` |
-| Menu, Exit | `0x27`, `0x28` |
-| Sub, Fav, Page up, Page down, Recall, USB | `0x29` to `0x2E` |
-| TV/R, Timer | `0x2F`, `0x30` |
+| Audio, APP, Wifi, Info (the coloured keys) | `0x0C` to `0x0F` |
+| EPG, Zoom, Meter, TXT | `0x10` to `0x13` |
+| Play, Stop, Pause, Rec | `0x14` to `0x17` |
+| Previous, Next, Rewind, Forward | `0x18` to `0x1B` |
+| Sat, F1 | `0x1C`, `0x1D` |
+| Up, Down, Left, Right, OK | `0x1E` to `0x22` |
+| Menu, Exit | `0x23`, `0x24` |
+| Sub, Fav, Recall, USB | `0x25` to `0x28` |
+| Page up, Page down | `0x29`, `0x2A` |
+| TV/R, Timer | `0x2B`, `0x2C` |
+
+There is no separate red/green/yellow/blue strip on this handset. The four
+coloured keys **are** Audio, APP, Wifi and Info, printed in red, green, amber
+and blue, which is the usual arrangement on this class of receiver. They are
+modelled as one key each, so the app has 45 buttons in total.
 
 Contiguity is deliberate. If any one key from this table turns out to work, the rest are very
 likely to be nearby, and a Discovery sweep converges in seconds instead of minutes. If none work,

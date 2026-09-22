@@ -4,6 +4,12 @@ package com.lvlaanu.mediastarremote.data
  * Every physical button on the MediaStar handset, in the order it appears from
  * the top of the remote downwards.
  *
+ * Note on the coloured keys: the handset has no separate red/green/yellow/blue
+ * strip. The four coloured keys **are** Audio, APP, Wifi and Info, printed in
+ * red, green, amber and blue respectively, which is the usual arrangement on
+ * this class of receiver. They are modelled as one key each rather than as a
+ * colour and a function.
+ *
  * [label] is what is printed on the key, [group] drives the visual section it
  * is drawn in, and [autoRepeat] marks the keys that should keep sending while
  * held down.
@@ -17,35 +23,31 @@ enum class RemoteKey(
     POWER("Power", KeyGroup.POWER),
     MUTE("Mute", KeyGroup.POWER),
 
-    // Row 2 — the four coloured function keys
-    RED("Red", KeyGroup.COLOUR),
-    GREEN("Green", KeyGroup.COLOUR),
-    YELLOW("Yellow", KeyGroup.COLOUR),
-    BLUE("Blue", KeyGroup.COLOUR),
+    // Row 2 — the four coloured keys
+    AUDIO("Audio", KeyGroup.COLOUR),
+    APP("APP", KeyGroup.COLOUR),
+    WIFI("Wifi", KeyGroup.COLOUR),
+    INFO("Info", KeyGroup.COLOUR),
 
     // Row 3
-    AUDIO("Audio", KeyGroup.FUNCTION),
-    APP("APP", KeyGroup.FUNCTION),
-    WIFI("Wifi", KeyGroup.FUNCTION),
-    INFO("Info", KeyGroup.FUNCTION),
-
-    // Row 4
     EPG("EPG", KeyGroup.FUNCTION),
     ZOOM("Zoom", KeyGroup.FUNCTION),
     METER("Meter", KeyGroup.FUNCTION),
     TXT("TXT", KeyGroup.FUNCTION),
 
-    // Rows 5 and 6 — transport controls
-    REWIND("Rewind", KeyGroup.MEDIA, autoRepeat = true),
+    // Row 4 — transport, first line
     PLAY("Play", KeyGroup.MEDIA),
-    PAUSE("Pause", KeyGroup.MEDIA),
-    FORWARD("Forward", KeyGroup.MEDIA, autoRepeat = true),
-    PREVIOUS("Previous", KeyGroup.MEDIA),
     STOP("Stop", KeyGroup.MEDIA),
-    RECORD("Record", KeyGroup.MEDIA),
-    NEXT("Next", KeyGroup.MEDIA),
+    PAUSE("Pause", KeyGroup.MEDIA),
+    RECORD("Rec", KeyGroup.MEDIA),
 
-    // Row 7
+    // Row 5 — transport, second line
+    PREVIOUS("Previous", KeyGroup.MEDIA),
+    NEXT("Next", KeyGroup.MEDIA),
+    REWIND("Rewind", KeyGroup.MEDIA, autoRepeat = true),
+    FORWARD("Forward", KeyGroup.MEDIA, autoRepeat = true),
+
+    // Row 6
     SAT("Sat", KeyGroup.FUNCTION),
     F1("F1", KeyGroup.FUNCTION),
 
@@ -59,13 +61,13 @@ enum class RemoteKey(
     MENU("Menu", KeyGroup.NAVIGATION),
     EXIT("Exit", KeyGroup.NAVIGATION),
 
-    // Row 9
+    // Rows 8 and 9, with the tall two-way PAGE key on the right
     SUB("Sub", KeyGroup.FUNCTION),
     FAV("Fav", KeyGroup.FUNCTION),
-    PAGE_UP("Page +", KeyGroup.FUNCTION, autoRepeat = true),
-    PAGE_DOWN("Page -", KeyGroup.FUNCTION, autoRepeat = true),
     RECALL("Recall", KeyGroup.FUNCTION),
     USB("USB", KeyGroup.FUNCTION),
+    PAGE_UP("Page up", KeyGroup.FUNCTION, autoRepeat = true),
+    PAGE_DOWN("Page down", KeyGroup.FUNCTION, autoRepeat = true),
 
     // Numeric keypad
     NUM_1("1", KeyGroup.NUMERIC),

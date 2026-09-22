@@ -59,6 +59,33 @@ On macOS or Linux use `./gradlew` instead.
 The debug build installs as a separate app (`applicationId` gets a `.debug` suffix), so you can
 keep a release build installed side by side while you experiment.
 
+### Troubleshooting the build
+
+**`KeytoolException: ... Algorithm HmacPBE1.2.840.113549.1.5.14 not available`**
+
+This is a JDK mismatch, not a problem with the code. The debug keystore in your home directory
+was written by a JDK new enough to use PBMAC1, and the JDK running the build is too old to read
+that format. It happens routinely when Android Studio signs with its bundled runtime and the
+command line signs with whatever `JAVA_HOME` points at.
+
+The project works around it already: `app/keystore/debug.keystore` is committed and the debug
+build type is wired to use it. It is written with the legacy SHA-1 MAC that every JDK from 8
+onward can read, so debug builds now sign identically on every machine. Those are Android's
+standard public debug credentials, they protect nothing, and the release build type does not use
+them.
+
+If you would rather go back to the per-machine keystore, delete `app/keystore/debug.keystore` and
+the signing config falls back to the one Android Studio generates. In that case also delete the
+stale one so it gets rebuilt by your current JDK:
+
+```bat
+del "%USERPROFILE%\.android\debug.keystore"
+```
+
+**Gradle and Android Studio disagree about the JDK.** Check which one the command line uses with
+`gradlew.bat -version`. To make both the same, point `JAVA_HOME` at Android Studio's bundled
+runtime, normally `C:\Program Files\Android\Android Studio\jbr`.
+
 ### Installing on the phone
 
 Enable **Developer options → USB debugging** on the POCO, plug it in, and either press Run in
@@ -78,6 +105,10 @@ remote does.
 
 A key whose label is dimmed has no code in the active profile. Press it and the status strip says
 so rather than failing silently.
+
+All 45 buttons of the handset are present. Note that this remote has no separate
+red/green/yellow/blue strip: the four coloured keys are Audio, APP, Wifi and Info, printed in red,
+green, amber and blue. They are modelled as one key each rather than as a colour and a function.
 
 The strip at the top shows whether an IR emitter was found and which profile is active. The two
 links lead to Learn Mode and Settings.
@@ -216,7 +247,7 @@ app/src/main/java/com/lvlaanu/mediastarremote/
     ├── LearnScreen.kt           Discovery and import
     ├── SettingsScreen.kt        Hardware check, profiles, backup, about
     ├── RemoteViewModel.kt       State, sweep loop, transmit dispatch
-    ├── components/              Reusable keys and the navigation pad
+    ├── components/              Reusable key shapes and the direction pad
     └── theme/                   Colours and typography
 ```
 

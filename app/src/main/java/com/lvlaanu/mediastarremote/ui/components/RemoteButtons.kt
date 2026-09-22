@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -133,6 +134,10 @@ fun RemoteButton(
     enabled: Boolean = true,
     mapped: Boolean = true,
     autoRepeat: Boolean = false,
+    /** Draws the label beside the icon rather than in place of it, as on Rec. */
+    labelWithIcon: Boolean = false,
+    iconSize: Dp = 18.dp,
+    iconTint: Color = labelColor,
     contentDescription: String = label,
     onPress: () -> Unit,
     onRepeat: () -> Unit = onPress,
@@ -173,22 +178,30 @@ fun RemoteButton(
         contentAlignment = Alignment.Center,
     ) {
         val contentAlpha = if (mapped) 1f else 0.38f
-        if (icon != null) {
-            Icon(
-                imageVector = icon,
-                contentDescription = null,
-                tint = labelColor.copy(alpha = contentAlpha),
-                modifier = Modifier.size(18.dp),
-            )
-        } else {
-            Text(
-                text = label,
-                color = labelColor.copy(alpha = contentAlpha),
-                fontSize = fontSize,
-                textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.labelMedium,
-                modifier = Modifier.padding(horizontal = 4.dp),
-            )
+        val showLabel = icon == null || labelWithIcon
+
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(3.dp),
+        ) {
+            if (icon != null) {
+                Icon(
+                    imageVector = icon,
+                    contentDescription = null,
+                    tint = iconTint.copy(alpha = contentAlpha),
+                    modifier = Modifier.size(iconSize),
+                )
+            }
+            if (showLabel) {
+                Text(
+                    text = label,
+                    color = labelColor.copy(alpha = contentAlpha),
+                    fontSize = fontSize,
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.labelMedium,
+                    modifier = Modifier.padding(horizontal = if (icon != null) 0.dp else 4.dp),
+                )
+            }
         }
     }
 }
@@ -206,6 +219,8 @@ fun RoundRemoteButton(
     enabled: Boolean = true,
     mapped: Boolean = true,
     autoRepeat: Boolean = false,
+    iconSize: Dp = 18.dp,
+    iconTint: Color = labelColor,
     contentDescription: String = label,
     onPress: () -> Unit,
     onRepeat: () -> Unit = onPress,
@@ -222,6 +237,49 @@ fun RoundRemoteButton(
         enabled = enabled,
         mapped = mapped,
         autoRepeat = autoRepeat,
+        iconSize = iconSize,
+        iconTint = iconTint,
+        contentDescription = contentDescription,
+        onPress = onPress,
+        onRepeat = onRepeat,
+    )
+}
+
+/**
+ * A pill: a rounded key whose corner radius always equals half its height, so
+ * it reads as a moulded oval at any size. Used for the arrow keys, Menu, Exit,
+ * Sat and F1, all of which are ovals on the physical handset.
+ */
+@Composable
+fun PillRemoteButton(
+    label: String,
+    modifier: Modifier = Modifier,
+    icon: ImageVector? = null,
+    accent: Color = RemoteColors.Key,
+    pressedAccent: Color = RemoteColors.KeyPressed,
+    labelColor: Color = RemoteColors.LabelPrimary,
+    fontSize: androidx.compose.ui.unit.TextUnit = 10.sp,
+    minHeight: Dp = 24.dp,
+    mapped: Boolean = true,
+    autoRepeat: Boolean = false,
+    iconSize: Dp = 16.dp,
+    contentDescription: String = label,
+    onPress: () -> Unit,
+    onRepeat: () -> Unit = onPress,
+) {
+    RemoteButton(
+        label = label,
+        modifier = modifier,
+        icon = icon,
+        shape = RoundedCornerShape(percent = 50),
+        accent = accent,
+        pressedAccent = pressedAccent,
+        labelColor = labelColor,
+        fontSize = fontSize,
+        minHeight = minHeight,
+        mapped = mapped,
+        autoRepeat = autoRepeat,
+        iconSize = iconSize,
         contentDescription = contentDescription,
         onPress = onPress,
         onRepeat = onRepeat,
